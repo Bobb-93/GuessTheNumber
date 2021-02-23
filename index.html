@@ -6,50 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess The Number</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
         header{
             background-color: #333;
+            height: 8em;
+            line-height: 8em;
+            vertical-align: middle;
         }
+
         h1{
             text-align: center;
             color: #ccc;
         }
+
         div{
-            border: 3px solid #999;
+            border: 2px solid #999;
+        }
+
+        #mainDiv{
+            width: 80%;
+            height: 99vh;
+            margin: auto;
+        }
+
+        #selectLevelDiv{
+            width: 90%;
+            margin: 3em auto 1em auto;
+            padding: 1em;
+        }
+
+        #guessTheNumberDiv{
+            width: 90%;
+            margin: auto auto 1em auto;
+            padding: 1em;
+            display: none;
+        }
+
+        #guessTableDiv{
+            width: 90%;
+            margin: auto auto 1em auto;
+            padding: 1em;
+            display: none;
+
         }
     </style>
 </head>
 <body>
-    <div>
+    <div id="mainDiv">
         <header>
             <h1>Guess the number</h1>
         </header>
         <div id="selectLevelDiv">
-            <label for="selectLevel">Select level</label>
-            <select name="selectLevel" id="selectLevelDropDown">
+            <label for="selectLevelDropDown">Select level</label>
+            <select name="selectLevelDropDown" id="selectLevelDropDown">
                 <option value="easy">1-10</option>
                 <option value="basic">1-50</option>
                 <option value="advanced">1-100</option>
             </select>
-            <button>Play</button>
+            <button id="playButton">Play</button>
         </div>
         
         <div id="guessTheNumberDiv">
             <h2>Познай числото, което съм си намислил, от x до y</h2>
             <input type="number" id="guessingInput" name="guessingInput" value="0">
-            <button>Guess</button>
-            <button>Reset Game</button>
+            <button id="guessButton">Guess</button>
+            <button id="resetButton">Reset Game</button>
         </div>
         
-        <div id="guessTable">
-            <table>
-                <tr>
-                    <th>Guess Status</th>
-                </tr>
+        <div id="guessTableDiv">
+            <table id="guess-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Guess Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </div>
     </div>
     <script>
+        const playButton = document.getElementById("playButton");
+        const guessButton = document.getElementById("guessButton");
+        const resetButton = document.getElementById("resetButton");
 
+        const selectLevelDiv = document.getElementById("selectLevelDiv");
+        const guessTheNumberDiv = document.getElementById("guessTheNumberDiv");
+        const guessTableDiv = document.getElementById("guessTableDiv");
+
+        const guessTable = document.getElementById("guess-table");
+        let tbodyRef = document.getElementById("guess-table").getElementsByTagName("tbody")[0];
+        let tableRows = guessTable.getElementsByTagName("tr");
+
+        let selectLevelDropDown = document.getElementById("selectLevelDropDown");
+        
+        let rowCount = tableRows.length;    
+        let randomNumber, count = 1, minValue = 1, maxValue;
+
+        function playGame(){
+            let difficulty = selectLevelDropDown.value;
+            console.log(`difficulty = ${difficulty}`);
+            if(difficulty === "easy"){
+                maxValue = 10;
+                selectLevelDiv.innerHTML = "<p>Playing Level: Easy</p>";
+            }else if(difficulty === "basic"){
+                maxValue = 50;
+                selectLevelDiv.innerHTML = "<p>Playing Level: Basic</p>";
+            }else{
+                maxValue = 100;
+                selectLevelDiv.innerHTML = "<p>Playing Level: Advanced</p>";
+            }
+
+            let min = Math.ceil(minValue);
+            let max = Math.ceil(maxValue);
+
+            randomNumber =  Math.floor(Math.random() * (max - min + 1)) + min;
+            console.log(randomNumber);
+
+
+        }
+
+        playButton.addEventListener("click", playGame);
     </script>
 </body>
 </html>
