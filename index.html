@@ -5,8 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess The Number</title>
+    <style>
+        header{
+            background-color: #333;
+        }
+        h1{
+            text-align: center;
+            color: #ccc;
+        }
+        div{
+            border: 3px solid #999;
+        }
+    </style>
 </head>
 <body>
-    
+    <div>
+        <header>
+            <h1>Guess the number</h1>
+        </header>
+        <div id="selectLevelDiv">
+            <label for="selectLevel">Select level</label>
+            <select name="selectLevel" id="selectLevelDropDown">
+                <option value="easy">1-10</option>
+                <option value="basic">1-50</option>
+                <option value="advanced">1-100</option>
+            </select>
+            <button>Play</button>
+        </div>
+        
+        <div id="guessTheNumberDiv">
+            <h2>Познай числото, което съм си намислил, от x до y</h2>
+            <input type="number" id="guessingInput" name="guessingInput" value="0">
+            <button>Guess</button>
+            <button>Reset Game</button>
+        </div>
+        
+        <div id="guessTable">
+            <table>
+                <tr>
+                    <th>Guess Status</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+
+    </script>
 </body>
 </html>
