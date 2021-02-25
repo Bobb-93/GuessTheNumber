@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #333;
+    height: 8em;
+    line-height: 8em;
+    vertical-align: middle;
+}
+
+h1{
+    text-align: center;
+    color: #ccc;
+}
+
+h2{
+    margin-bottom: 1em;
+}
+
+div{
+    border: 2px solid #999;
+}
+
+th, td{
+    text-align: center;
+    width: 10em;
+}
+
+#mainDiv{
+    width: 80%;
+    height: 99vh;
+    margin: auto;
+}
+
+#selectLevelDiv{
+    width: 90%;
+    margin: 3em auto 1em auto;
+    padding: 1em;
+}
+
+#guessTheNumberDiv{
+    width: 90%;
+    margin: auto auto 1em auto;
+    padding: 1em;
+    display: none;
+}
+
+#guessTableDiv{
+    width: 90%;
+    margin: auto auto 1em auto;
+    padding: 1em;
+    display: none;
+}
+
+#playingLevel{
+    display: none;
+}
+
+#numberOfTriesParagraph{
+    margin-top: 1em;
+}
+
+#startNewGameButton{
+    display: none;
+}
