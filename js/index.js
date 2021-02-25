@@ -25,7 +25,13 @@ const labelForSelectLevelDropDown = document.querySelector("label[for=selectLeve
 const selectLevelDropDown = document.getElementById("selectLevelDropDown");
 const playingLevel = document.getElementById("playingLevel");
 
-let randomNumber, count = 1, minValue = 1, maxValue, tries, maxTries, difficulty;
+let randomNumber;
+let count = 1;
+let minValue = 1;
+let maxValue;
+let tries;
+let maxTries;
+let difficulty;
 
 function playGame(){
     difficulty = selectLevelDropDown.value;
@@ -65,7 +71,10 @@ function playGame(){
 
 function checkNumber(){
     let guessNumber; 
-    let newRow, newCellText, newCellNumber, insertedText;
+    let newRow;
+    let newCellText;
+    let newCellNumber;
+    let insertedText;
     
     guessNumber = Number(guessingInput.value);
     guessTableDiv.style.display = "block";
@@ -180,7 +189,7 @@ startNewGameButton.addEventListener("click", startNewGame);
 // Execute a function when the user releases a key on the keyboard
 guessingInput.addEventListener("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
+    if (event.key === "Enter") {
         // Cancel the default action, if needed
         event.preventDefault();
         // Trigger the button element with a click
