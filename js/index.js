@@ -1,3 +1,4 @@
+// dom: various dom objects
 const dom = {};
 dom.playButton = document.getElementById("playButton");
 dom.guessButton = document.getElementById("guessButton");
@@ -11,6 +12,10 @@ dom.numberOfTries = document.getElementById("numberOfTries");
 dom.guessingInput = document.getElementById("guessingInput");
 dom.from = document.getElementById("from");
 dom.to = document.getElementById("to");
+dom.labelForSelectLevelDropDown = document.querySelector("label[for=selectLevelDropDown]");
+dom.selectLevelDropDown = document.getElementById("selectLevelDropDown");
+dom.playingLevel = document.getElementById("playingLevel");
+
 dom.guessTable = document.getElementById("guess-table");
 dom.tbodyRef = dom.guessTable.tBodies[0];
 //dom.tableRows = guessTable.rows;
@@ -20,10 +25,8 @@ dom.tbodyRef = dom.guessTable.tBodies[0];
 //dom.tbodyRef = document.getElementById("guess-table").getElementsByTagName("tbody")[0];
 //dom.tableRows = guessTable.getElementsByTagName("tr");
 
-dom.labelForSelectLevelDropDown = document.querySelector("label[for=selectLevelDropDown]");
-dom.selectLevelDropDown = document.getElementById("selectLevelDropDown");
-dom.playingLevel = document.getElementById("playingLevel");
 
+// gameVariables: variables that are used in the entire game
 let gameVariables = {
     randomNumber: undefined,
     count: 1,
@@ -37,6 +40,7 @@ let gameVariables = {
 function playGame(){
     gameVariables.difficulty = dom.selectLevelDropDown.value;
     // console.log(`gameVariables.difficulty = ${gameVariables.difficulty}`);
+    
     if(gameVariables.difficulty === "easy"){
         gameVariables.maxValue = 10;
         gameVariables.maxTries = 5;
@@ -68,6 +72,9 @@ function playGame(){
 }
 
 function checkNumber(){
+
+    // tableVariables: variables, that are used only, when we add new rows in the table
+
     let tableVariables = {
         guessNumber: undefined,
         newRow: undefined,
