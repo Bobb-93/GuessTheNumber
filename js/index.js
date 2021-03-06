@@ -77,6 +77,7 @@ function playGame(){
     dom.playingLevel.style.display = "block";
     // dom.endMessage.style.display = "block";
     dom.guessTheNumberDiv.style.display = "block";
+    dom.guessingInput.focus();
 }
 
 function checkNumber(){
