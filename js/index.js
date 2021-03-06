@@ -92,13 +92,16 @@ function checkNumber(){
     dom.guessTableDiv.style.display = "block";
     if(tableVariables.guessNumber < gameVariables.minValue ||
         tableVariables.guessNumber > gameVariables.maxValue){
-        alert(`Please, enter a number in range: ${gameVariables.minValue},
-        ${gameVariables.maxValue}`);
+        alert(
+            `Please, enter a number in range: ${gameVariables.minValue},${gameVariables.maxValue}`
+        );
         //prevent displaying of table, if our first guess is a number,
         //that is out of range
         if(gameVariables.count === 1){
             dom.guessTableDiv.style.display = "none";
         }
+        guessingInput.value = "";
+        dom.guessingInput.focus();
     }else if(tableVariables.guessNumber > gameVariables.randomNumber &&
         gameVariables.count < gameVariables.maxTries){
         gameVariables.count += 1;
@@ -116,6 +119,8 @@ function checkNumber(){
         tableVariables.insertedText = document.createTextNode(`high`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         // console.log(`count = ${count}`);
+        guessingInput.value = "";
+        dom.guessingInput.focus();
     }else if(tableVariables.guessNumber < gameVariables.randomNumber &&
             gameVariables.count < gameVariables.maxTries){
         gameVariables.count += 1;
@@ -133,6 +138,8 @@ function checkNumber(){
         tableVariables.insertedText = document.createTextNode(`low`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         // console.log(`count = ${count}`);
+        guessingInput.value = "";
+        dom.guessingInput.focus();
     }else if(tableVariables.guessNumber === gameVariables.randomNumber){
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
