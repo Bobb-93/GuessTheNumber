@@ -15,6 +15,8 @@ const dom = {
     labelForSelectLevelDropDown: document.querySelector("label[for=selectLevelDropDown]"),
     selectLevelDropDown: document.getElementById("selectLevelDropDown"),
     playingLevel: document.getElementById("playingLevel"),
+    endMessage: document.getElementById("endMessage"),
+    level: document.getElementById("level"),
     guessTable: document.getElementById("guess-table"),
 };
 
@@ -49,15 +51,15 @@ function playGame(){
     if(gameVariables.difficulty === "easy"){
         gameVariables.maxValue = 10;
         gameVariables.maxTries = 5;
-        dom.playingLevel.innerText = "Playing Level: Easy";
+        dom.level.innerText = "Easy";
     }else if(gameVariables.difficulty === "basic"){
         gameVariables.maxValue = 50;
         gameVariables.maxTries = 7;
-        dom.playingLevel.innerText = "Playing Level: Basic";
+        dom.level.innerText = "Basic";
     }else{
         gameVariables.maxValue = 100;
         gameVariables.maxTries = 8;
-        dom.playingLevel.innerText = "Playing Level: Advanced";
+        dom.level.innerText = "Advanced";
     }
     
     gameVariables.tries = gameVariables.maxTries;
@@ -73,13 +75,13 @@ function playGame(){
     dom.playButton.style.display = "none";
     dom.labelForSelectLevelDropDown.style.display = "none";
     dom.playingLevel.style.display = "block";
+    // dom.endMessage.style.display = "block";
     dom.guessTheNumberDiv.style.display = "block";
 }
 
 function checkNumber(){
     
     // tableVariables: variables, that are used only, when we add new rows in the table
-    
     let tableVariables = {
         guessNumber: undefined,
         newRow: undefined,
@@ -146,7 +148,9 @@ function checkNumber(){
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         
         dom.guessTheNumberDiv.style.display = "none";
-        dom.playingLevel.innerText = `Bravo! You guessed my number (${gameVariables.randomNumber}) from ${gameVariables.count} tries`;
+        dom.playingLevel.style.display = "none";
+        dom.endMessage.style.display = "block";
+        dom.endMessage.innerText = `Bravo! You guessed my number (${gameVariables.randomNumber}) from ${gameVariables.count} tries`;
         dom.startNewGameButton.style.display = "block";
     }else{
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
@@ -160,7 +164,9 @@ function checkNumber(){
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         
         dom.guessTheNumberDiv.style.display = "none";
-        dom.playingLevel.innerText = `You lose! My number was (${gameVariables.randomNumber})`;
+        dom.playingLevel.style.display = "none";
+        dom.endMessage.style.display = "block";
+        dom.endMessage.innerText = `You lose! My number was (${gameVariables.randomNumber})`;
         dom.startNewGameButton.style.display = "block";
     }
 }
@@ -181,9 +187,11 @@ function startNewGame(){
     
     dom.guessTableDiv.style.display = "none";
     document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()});
-    dom.playingLevel.innerHTML = "Playing Level: <span></span>";
+    dom.level.innerHTML = "";
     dom.startNewGameButton.style.display="none";
     dom.guessingInput.value="";
+    dom.endMessage.style.display = "none";
+    dom.endMessage.innerText = "";
 }
 
 function resetGame(){

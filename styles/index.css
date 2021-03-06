@@ -65,3 +65,7 @@ th, td{
 #startNewGameButton{
     display: none;
 }
+
+#endMessage{
+    display: none;
+}
