@@ -1,30 +1,35 @@
 // dom: various dom objects
-const dom = {};
-dom.playButton = document.getElementById("playButton");
-dom.guessButton = document.getElementById("guessButton");
-dom.resetButton = document.getElementById("resetButton");
-dom.startNewGameButton = document.getElementById("startNewGameButton");
-dom.selectLevelDiv = document.getElementById("selectLevelDiv");
-dom.guessTheNumberDiv = document.getElementById("guessTheNumberDiv");
-dom.guessTableDiv = document.getElementById("guessTableDiv");
-dom.numberOfTriesRemaining = document.getElementById("numberOfTriesRemaining");
-dom.numberOfTries = document.getElementById("numberOfTries");
-dom.guessingInput = document.getElementById("guessingInput");
-dom.from = document.getElementById("from");
-dom.to = document.getElementById("to");
-dom.labelForSelectLevelDropDown = document.querySelector("label[for=selectLevelDropDown]");
-dom.selectLevelDropDown = document.getElementById("selectLevelDropDown");
-dom.playingLevel = document.getElementById("playingLevel");
+const dom = {
+    playButton: document.getElementById("playButton"),
+    guessButton: document.getElementById("guessButton"),
+    resetButton: document.getElementById("resetButton"),
+    startNewGameButton: document.getElementById("startNewGameButton"),
+    selectLevelDiv: document.getElementById("selectLevelDiv"),
+    guessTheNumberDiv: document.getElementById("guessTheNumberDiv"),
+    guessTableDiv: document.getElementById("guessTableDiv"),
+    numberOfTriesRemaining: document.getElementById("numberOfTriesRemaining"),
+    numberOfTries: document.getElementById("numberOfTries"),
+    guessingInput: document.getElementById("guessingInput"),
+    from: document.getElementById("from"),
+    to: document.getElementById("to"),
+    labelForSelectLevelDropDown: document.querySelector("label[for=selectLevelDropDown]"),
+    selectLevelDropDown: document.getElementById("selectLevelDropDown"),
+    playingLevel: document.getElementById("playingLevel"),
+    guessTable: document.getElementById("guess-table"),
+};
 
-dom.guessTable = document.getElementById("guess-table");
 dom.tbodyRef = dom.guessTable.tBodies[0];
-//dom.tableRows = guessTable.rows;
-//dom.rowCount = tableRows.length;  
+// alternative way for tbodyRef:
+// dom.tbodyRef = dom.guessTable.getElementsByTagName("tbody")[0];
 
-//another way:
-//dom.tbodyRef = document.getElementById("guess-table").getElementsByTagName("tbody")[0];
-//dom.tableRows = guessTable.getElementsByTagName("tr");
+//bonus variable for the table rows: 
+//dom.tableRows = dom.guessTable.rows;
 
+// alternative way for the table rows:
+//dom.tableRows = dom.guessTable.getElementsByTagName("tr");
+
+//bonus variable for the length of tableRows:
+//dom.rowCount = dom.tableRows.length;  
 
 // gameVariables: variables that are used in the entire game
 let gameVariables = {
@@ -72,9 +77,9 @@ function playGame(){
 }
 
 function checkNumber(){
-
+    
     // tableVariables: variables, that are used only, when we add new rows in the table
-
+    
     let tableVariables = {
         guessNumber: undefined,
         newRow: undefined,
@@ -82,7 +87,7 @@ function checkNumber(){
         newCellNumber: undefined,
         insertedText: undefined
     };
-
+    
     tableVariables.guessNumber = Number(guessingInput.value);
     dom.guessTableDiv.style.display = "block";
     
