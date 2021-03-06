@@ -119,7 +119,7 @@ function checkNumber(){
         tableVariables.insertedText = document.createTextNode(`high`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         // console.log(`count = ${count}`);
-        guessingInput.value = "";
+        // guessingInput.value = "";
         dom.guessingInput.focus();
     }else if(tableVariables.guessNumber < gameVariables.randomNumber &&
             gameVariables.count < gameVariables.maxTries){
@@ -138,7 +138,7 @@ function checkNumber(){
         tableVariables.insertedText = document.createTextNode(`low`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         // console.log(`count = ${count}`);
-        guessingInput.value = "";
+        // guessingInput.value = "";
         dom.guessingInput.focus();
     }else if(tableVariables.guessNumber === gameVariables.randomNumber){
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
