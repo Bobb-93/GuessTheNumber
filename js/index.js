@@ -65,9 +65,9 @@ function playGame(){
     dom.numberOfTries.innerText = gameVariables.maxTries;
     dom.from.innerText=`${gameVariables.minValue}`;
     dom.to.innerText=`${gameVariables.maxValue}`;
-    gameVariables.randomNumber =  Math.floor(Math.random() *
-        (gameVariables.maxValue - gameVariables.minValue + 1)) +
-        gameVariables.minValue;
+    gameVariables.randomNumber =  Math.floor(Math.random()
+        * (gameVariables.maxValue - gameVariables.minValue + 1))
+        + gameVariables.minValue;
     // console.log(randomNumber);
     dom.selectLevelDropDown.style.display = "none";
     dom.playButton.style.display = "none";
@@ -90,8 +90,8 @@ function checkNumber(){
     };
     tableVariables.guessNumber = Number(guessingInput.value);
     dom.guessTableDiv.style.display = "block";
-    if(tableVariables.guessNumber < gameVariables.minValue ||
-        tableVariables.guessNumber > gameVariables.maxValue){
+    if(tableVariables.guessNumber < gameVariables.minValue
+        || tableVariables.guessNumber > gameVariables.maxValue){
         alert(
             `Please, enter a number in range: ${gameVariables.minValue},${gameVariables.maxValue}`
         );
@@ -102,8 +102,8 @@ function checkNumber(){
         }
         guessingInput.value = "";
         dom.guessingInput.focus();
-    }else if(tableVariables.guessNumber > gameVariables.randomNumber &&
-        gameVariables.count < gameVariables.maxTries){
+    }else if(tableVariables.guessNumber > gameVariables.randomNumber
+            && gameVariables.count < gameVariables.maxTries){
         gameVariables.count += 1;
         gameVariables.tries -= 1;
         dom.numberOfTriesRemaining.innerText = gameVariables.tries;
@@ -113,16 +113,16 @@ function checkNumber(){
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
-        tableVariables.insertedText =
-                document.createTextNode(`${tableVariables.guessNumber}`);
+        tableVariables.insertedText
+            = document.createTextNode(`${tableVariables.guessNumber}`);
         tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`high`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         // console.log(`count = ${count}`);
         // guessingInput.value = "";
         dom.guessingInput.focus();
-    }else if(tableVariables.guessNumber < gameVariables.randomNumber &&
-            gameVariables.count < gameVariables.maxTries){
+    }else if(tableVariables.guessNumber < gameVariables.randomNumber
+            && gameVariables.count < gameVariables.maxTries){
         gameVariables.count += 1;
         gameVariables.tries -= 1;
         dom.numberOfTriesRemaining.innerText = gameVariables.tries;
@@ -132,8 +132,8 @@ function checkNumber(){
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
-        tableVariables.insertedText =
-            document.createTextNode(`${tableVariables.guessNumber}`);
+        tableVariables.insertedText
+            = document.createTextNode(`${tableVariables.guessNumber}`);
         tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`low`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
@@ -144,31 +144,31 @@ function checkNumber(){
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
-        tableVariables.insertedText =
-            document.createTextNode(`${tableVariables.guessNumber}`);
+        tableVariables.insertedText 
+            = document.createTextNode(`${tableVariables.guessNumber}`);
         tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`win`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         dom.guessTheNumberDiv.style.display = "none";
         dom.playingLevel.style.display = "none";
         dom.endMessage.style.display = "block";
-        dom.endMessage.innerText =
-        `Bravo! You guessed my number (${gameVariables.randomNumber}) from ${gameVariables.count} tries`;
+        dom.endMessage.innerText
+            = `Bravo! You guessed my number (${gameVariables.randomNumber}) from ${gameVariables.count} tries`;
         dom.startNewGameButton.style.display = "block";
     }else{
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
-        tableVariables.insertedText =
-            document.createTextNode(`${tableVariables.guessNumber}`);
+        tableVariables.insertedText
+            = document.createTextNode(`${tableVariables.guessNumber}`);
         tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`loss`);
         tableVariables.newCellText.appendChild(tableVariables.insertedText);
         dom.guessTheNumberDiv.style.display = "none";
         dom.playingLevel.style.display = "none";
         dom.endMessage.style.display = "block";
-        dom.endMessage.innerText =
-            `You lose! My number was (${gameVariables.randomNumber})`;
+        dom.endMessage.innerText
+            = `You lose! My number was (${gameVariables.randomNumber})`;
         dom.startNewGameButton.style.display = "block";
     }
 }
