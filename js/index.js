@@ -90,7 +90,7 @@ function checkNumber(){
         newCellNumber: undefined,
         insertedText: undefined
     };
-    tableVariables.guessNumber = Number(guessingInput.value);
+    tableVariables.guessNumber = Number(dom.guessingInput.val());
     dom.guessTableDiv.css("display", "block");
     if(tableVariables.guessNumber < gameVariables.minValue
         || tableVariables.guessNumber > gameVariables.maxValue){
@@ -102,7 +102,7 @@ function checkNumber(){
         if(gameVariables.count === 1){
             dom.guessTableDiv.css("display", "none");
         }
-        guessingInput.value = "";
+        dom.guessingInput.val("");
         dom.guessingInput.focus();
     }else if(tableVariables.guessNumber > gameVariables.randomNumber
             && gameVariables.count < gameVariables.maxTries){
@@ -211,7 +211,7 @@ dom.startNewGameButton.on("click", startNewGame);
 
 //From https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 // Execute a function when the user releases a key on the keyboard
-guessingInput.addEventListener("keyup", function(event) {
+dom.guessingInput.on("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.key === "Enter") {
         // Cancel the default action, if needed
