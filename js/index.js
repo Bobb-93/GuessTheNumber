@@ -23,6 +23,18 @@ const dom = {
 
 dom.tbodyRef = dom.tbody[0];
 
+// alternative way for tbodyRef:
+// dom.tbodyRef = dom.guessTable.getElementsByTagName("tbody")[0];
+
+//bonus variable for the table rows:
+//dom.tableRows = dom.guessTable.rows;
+
+// alternative way for the table rows:
+//dom.tableRows = dom.guessTable.getElementsByTagName("tr");
+
+//bonus variable for the length of tableRows:
+//dom.rowCount = dom.tableRows.length;
+
 // gameVariables: variables that are used in the entire game
 let gameVariables = {
     randomNumber: undefined,
@@ -102,9 +114,9 @@ function checkNumber(){
         tableVariables.newCellText = tableVariables.newRow.insertCell();
         tableVariables.insertedText
             = document.createTextNode(`${tableVariables.guessNumber}`);
-        tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
+        tableVariables.newCellNumber.append(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`high`);
-        tableVariables.newCellText.appendChild(tableVariables.insertedText);
+        tableVariables.newCellText.append(tableVariables.insertedText);
         // console.log(`count = ${count}`);
         // guessingInput.value = "";
         dom.guessingInput.focus();
@@ -118,9 +130,9 @@ function checkNumber(){
         tableVariables.newCellText = tableVariables.newRow.insertCell();
         tableVariables.insertedText
             = document.createTextNode(`${tableVariables.guessNumber}`);
-        tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
+        tableVariables.newCellNumber.append(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`low`);
-        tableVariables.newCellText.appendChild(tableVariables.insertedText);
+        tableVariables.newCellText.append(tableVariables.insertedText);
         // console.log(`count = ${count}`);
         // guessingInput.value = "";
         dom.guessingInput.focus();
@@ -130,9 +142,9 @@ function checkNumber(){
         tableVariables.newCellText = tableVariables.newRow.insertCell();
         tableVariables.insertedText 
             = document.createTextNode(`${tableVariables.guessNumber}`);
-        tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
+        tableVariables.newCellNumber.append(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`win`);
-        tableVariables.newCellText.appendChild(tableVariables.insertedText);
+        tableVariables.newCellText.append(tableVariables.insertedText);
         dom.guessTheNumberDiv.css("display", "none");
         dom.playingLevel.css("display", "none");
         dom.endMessage.css("display", "block");
@@ -145,9 +157,9 @@ function checkNumber(){
         tableVariables.newCellText = tableVariables.newRow.insertCell();
         tableVariables.insertedText
             = document.createTextNode(`${tableVariables.guessNumber}`);
-        tableVariables.newCellNumber.appendChild(tableVariables.insertedText);
+        tableVariables.newCellNumber.append(tableVariables.insertedText);
         tableVariables.insertedText = document.createTextNode(`loss`);
-        tableVariables.newCellText.appendChild(tableVariables.insertedText);
+        tableVariables.newCellText.append(tableVariables.insertedText);
         dom.guessTheNumberDiv.css("display", "none");
         dom.playingLevel.css("display", "none");
         dom.endMessage.css("display", "block");
@@ -165,9 +177,7 @@ function startNewGame(){
     dom.dropDown.css("display", "inline");
     dom.playButton.css("display", "inline-block");
     dom.guessTableDiv.css("display", "none");
-    document.querySelectorAll("table tbody tr").forEach(function(e){
-        e.remove();
-    });
+    $("table tbody tr").remove();
     dom.level.innerHTML = "";
     dom.startNewGameButton.css("display", "none");
     dom.guessingInput.val("");
@@ -181,14 +191,14 @@ function resetGame(){
     }
 }
 
-dom.playButton.on("click", playGame);
-dom.guessButton.on("click", checkNumber);
-dom.resetButton.on("click", resetGame);
-dom.startNewGameButton.on("click", startNewGame);
+dom.playButton.click(playGame);
+dom.guessButton.click(checkNumber);
+dom.resetButton.click(resetGame);
+dom.startNewGameButton.click(startNewGame);
 
 //From https://www.w3schools.com/howto/howto_js_trigger_button_enter.asp
 // Execute a function when the user releases a key on the keyboard
-dom.guessingInput.on("keyup", function(event) {
+dom.guessingInput.keyup(function(event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.key === "Enter") {
         // Cancel the default action, if needed
