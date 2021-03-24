@@ -20,20 +20,8 @@ const dom = {
     guessTable: $("#guess-table"),
     tbody: $("#guess-table > tbody")
 };
-console.log(dom.guessTable);
+
 dom.tbodyRef = dom.tbody[0];
-
-// alternative way for tbodyRef:
-// dom.tbodyRef = dom.guessTable.getElementsByTagName("tbody")[0];
-
-//bonus variable for the table rows:
-//dom.tableRows = dom.guessTable.rows;
-
-// alternative way for the table rows:
-//dom.tableRows = dom.guessTable.getElementsByTagName("tr");
-
-//bonus variable for the length of tableRows:
-//dom.rowCount = dom.tableRows.length;
 
 // gameVariables: variables that are used in the entire game
 let gameVariables = {
@@ -109,9 +97,6 @@ function checkNumber(){
         gameVariables.count += 1;
         gameVariables.tries -= 1;
         dom.numberOfTriesRemaining.text(gameVariables.tries);
-        //NOT working:
-        // tableRows[tableRows.length-1].insertAdjacentHTML("afterbegin",
-        //`<tr><td>${guessNumber}</td><td>high</td></tr>`);
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
@@ -128,9 +113,6 @@ function checkNumber(){
         gameVariables.count += 1;
         gameVariables.tries -= 1;
         dom.numberOfTriesRemaining.text(gameVariables.tries);
-        //NOT working:
-        // tableRows[tableRows.length-1].insertAdjacentHTML("afterbegin",
-        //`<tr><td>${guessNumber}</td><td>low</td></tr>`);
         tableVariables.newRow = dom.tbodyRef.insertRow(0);
         tableVariables.newCellNumber = tableVariables.newRow.insertCell();
         tableVariables.newCellText = tableVariables.newRow.insertCell();
@@ -176,12 +158,7 @@ function checkNumber(){
 }
 
 function startNewGame(){
-    // gameVariables.randomNumber = undefined;
     gameVariables.count = 1;
-    // gameVariables.maxValue = undefined;
-    // gameVariables.tries = undefined;
-    // gameVariables.maxTries = undefined;
-    // gameVariables.difficulty = undefined;
     dom.guessTheNumberDiv.css("display", "none");
     dom.playingLevel.css("display", "none");
     dom.selectLevelDropDown.css("display", "inline-block");
